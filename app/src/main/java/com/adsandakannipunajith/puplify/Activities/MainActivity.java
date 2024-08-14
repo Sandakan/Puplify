@@ -36,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
         if (preferences.contains("email") && preferences.contains("id")) {
             Toast.makeText(this, "You are already logged in", Toast.LENGTH_SHORT).show();
-//            finish();
+            startActivity(new Intent(this, DashboardActivity.class));
+            finish();
         }
     }
 
