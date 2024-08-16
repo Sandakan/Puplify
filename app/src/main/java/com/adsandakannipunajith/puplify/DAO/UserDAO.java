@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.adsandakannipunajith.puplify.App;
 import com.adsandakannipunajith.puplify.DatabaseHelper;
+import com.adsandakannipunajith.puplify.Models.UserModel;
 
 public class UserDAO {
     private final SQLiteDatabase db;
@@ -37,11 +38,11 @@ public class UserDAO {
     }
 
     // Method to fetch user details
-    public Cursor getUser(String email) {
+    public UserModel getUser(String email) {
         Cursor cursor = db.rawQuery("SELECT * FROM user WHERE email=? LIMIT 1", new String[]{email});
         if (cursor != null && cursor.moveToFirst()) {
             // Retrieve user data from the cursor
-            return cursor;
+            return UserModel.fromCursor(cursor);
         }
 
         return null;

@@ -1,5 +1,7 @@
 package com.adsandakannipunajith.puplify.Activities;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -13,6 +15,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.adsandakannipunajith.puplify.DAO.UserDAO;
+import com.adsandakannipunajith.puplify.Models.UserModel;
 import com.adsandakannipunajith.puplify.R;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -29,6 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
     public TextView confirmPasswordInputErrorMessage;
 
     private UserDAO userDAO;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
         confirmPasswordInputErrorMessage = findViewById(R.id.register_confirm_password_input_error_message);
 
         userDAO = new UserDAO(this);
+        sharedPreferences = getSharedPreferences("AppPreferences", MODE_PRIVATE);
     }
 
     public void onRegister(View v) {
@@ -105,8 +110,19 @@ public class RegisterActivity extends AppCompatActivity {
 
         if (!isError) {
             long isAuthenticated = userDAO.addUser(firstName, lastName, email, password);
-            if (isAuthenticated > 0) Toast.makeText(this, "Registered", Toast.LENGTH_SHORT).show();
-            else {
+            if (isAuthenticated > 0) {
+                UserModel user = userDAO.getUser(email);
+                sharedPreferences.edit()
+                        .putString("user_email", user.getEmail())
+                        .putInt("user_id", user.getId())
+                        .putString("user_first_name", user.getFirstName())
+                        .putString("user_last_name", user.getLastName())
+                        .apply();
+
+                Toast.makeText(this, "Registered", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, DashboardActivity.class));
+                finish();
+            } else {
                 emailInputErrorMessage.setVisibility(View.VISIBLE);
                 emailInputErrorMessage.setText(R.string.email_is_already_registered);
             }

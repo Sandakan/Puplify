@@ -18,8 +18,8 @@ public class App extends Application {
         super.onCreate();
 
         // Initialize SharedPreferences
-        sharedPreferences = getSharedPreferences("AppPreferences", Context.MODE_PRIVATE);
-
+        sharedPreferences = getSharedPreferences(getResources().getString(R.string.SHARED_PREFERENCES_FILE_KEY), Context.MODE_PRIVATE);
+//        sharedPreferences.edit().clear().apply();
         // Initialize SQLite database
         database = new DatabaseHelper(this).getWritableDatabase();
 

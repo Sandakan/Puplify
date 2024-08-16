@@ -2,9 +2,10 @@ package com.adsandakannipunajith.puplify.Activities;
 
 import android.os.Bundle;
 
-import com.adsandakannipunajith.puplify.Activities.ui.dashboard.DashboardFragment;
+
+import com.adsandakannipunajith.puplify.Activities.ui.browse.BrowseFragment;
+import com.adsandakannipunajith.puplify.Activities.ui.cart.CartFragment;
 import com.adsandakannipunajith.puplify.Activities.ui.home.HomeFragment;
-import com.adsandakannipunajith.puplify.Activities.ui.notifications.NotificationsFragment;
 import com.adsandakannipunajith.puplify.R;
 import com.adsandakannipunajith.puplify.databinding.ActivityDashboardBinding;
 
@@ -32,13 +33,13 @@ public class DashboardActivity extends AppCompatActivity {
                 return true;
             }
 
-            if (menuItemId == R.id.navigation_dashboard) {
-                replaceFragment(new DashboardFragment());
+            if (menuItemId == R.id.navigation_browse) {
+                replaceFragment(new BrowseFragment());
                 return true;
             }
 
-            if (menuItemId == R.id.navigation_notifications) {
-                replaceFragment(new NotificationsFragment());
+            if (menuItemId == R.id.navigation_cart) {
+                replaceFragment(new CartFragment());
                 return true;
             }
 

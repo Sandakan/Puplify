@@ -1,5 +1,6 @@
 package com.adsandakannipunajith.puplify.Activities;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.adsandakannipunajith.puplify.DAO.UserDAO;
+import com.adsandakannipunajith.puplify.Models.UserModel;
 import com.adsandakannipunajith.puplify.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -33,11 +35,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+//            return insets;
+//        });
 
         emailInput = findViewById(R.id.login_email_input);
         passwordInput = findViewById(R.id.login_password_input);
@@ -74,10 +76,17 @@ public class LoginActivity extends AppCompatActivity {
         if (!isError) {
             boolean isAuthenticated = userDAO.authenticateUser(email, password);
             if (isAuthenticated) {
-                Cursor userCursor = userDAO.getUser(email);
-                int id = userCursor.getInt(userCursor.getColumnIndexOrThrow("id"));
-                sharedPreferences.edit().putString("email", email).putString("id", String.valueOf(id)).apply();
-                Toast.makeText(this, "User with id " + id + " logged in successfully", Toast.LENGTH_SHORT).show();
+                UserModel user = userDAO.getUser(email);
+                sharedPreferences.edit()
+                        .putString("user_email", user.getEmail())
+                        .putInt("user_id", user.getId())
+                        .putString("user_first_name", user.getFirstName())
+                        .putString("user_last_name", user.getLastName())
+                        .apply();
+
+                Toast.makeText(this, "User with id " + user.getId() + " logged in successfully", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, DashboardActivity.class));
+                finish();
             } else {
                 emailInputErrorMessage.setVisibility(View.VISIBLE);
                 emailInputErrorMessage.setText(R.string.email_or_password_is_incorrect);
