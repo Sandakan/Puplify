@@ -1,6 +1,7 @@
 package com.adsandakannipunajith.puplify.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.adsandakannipunajith.puplify.Activities.ProductActivity;
 import com.adsandakannipunajith.puplify.DAO.CartDAO;
 import com.adsandakannipunajith.puplify.Models.CartModel;
 import com.adsandakannipunajith.puplify.Models.ProductModel;
@@ -37,6 +39,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             ProductModel product = ProductModel.fromCursor(cursor);
             products.add(product);
         }
+        cursor.close();
     }
 
     public ProductAdapter(Context context, ArrayList<ProductModel> products) {
@@ -52,6 +55,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         return new ProductAdapter.ViewHolder(view);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull ProductAdapter.ViewHolder holder, int position) {
         holder.productName.setText(products.get(position).getName());
@@ -66,6 +70,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             cartDAO.addCartItem(products.get(position).getId(), 1);
             Toast.makeText(view.getContext(), "Item added to cart successfully", Toast.LENGTH_SHORT).show();
 
+        });
+
+        holder.itemView.setOnClickListener(view -> {
+            Intent intent = new Intent(view.getContext(), ProductActivity.class);
+            intent.putExtra("product_id", products.get(position).getId());
+            view.getContext().startActivity(intent);
         });
     }
 

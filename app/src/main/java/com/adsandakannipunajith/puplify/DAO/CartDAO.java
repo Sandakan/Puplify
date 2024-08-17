@@ -1,5 +1,6 @@
 package com.adsandakannipunajith.puplify.DAO;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
@@ -24,7 +25,9 @@ public class CartDAO {
             return null;
         }
         cursor.moveToFirst();
-        return CartModel.fromCursor(cursor);
+        CartModel model = CartModel.fromCursor(cursor);
+        cursor.close();
+        return model;
     }
 
     public ArrayList<CartItemModel> getCartItems() {
@@ -35,7 +38,7 @@ public class CartDAO {
             return products;
         }
 
-        Cursor cursor = database.rawQuery("SELECT * FROM cart_items WHERE cart_id = ?", new String[]{String.valueOf(cart.getId())});
+        Cursor cursor = database.rawQuery("SELECT * FROM cart_item WHERE cart_id = ?", new String[]{String.valueOf(cart.getId())});
         if (cursor == null || cursor.getCount() == 0) {
             return products;
         }
@@ -64,15 +67,59 @@ public class CartDAO {
     public void addCartItem(int productId, int quantity) {
         CartModel cart = createCart();
 
-        database.execSQL(
-                "INSERT INTO cart_item (cart_id, product_id, quantity) VALUES (?, ?, ?)",
-                new String[]{
-                        String.valueOf(cart.getId()),
-                        String.valueOf(productId),
-                        String.valueOf(quantity)
-                }
-        );
+        String query = "SELECT id FROM cart_item WHERE cart_id = ? AND product_id = ?";
+        Cursor cursor = database.rawQuery(query, new String[]{String.valueOf(cart.getId()), String.valueOf(productId)});
 
+        if (cursor != null && cursor.getCount() > 0) {
+            // cart item with the selected product_id exists in the cart_item table
+            cursor.moveToFirst();
+            int cartItemId = cursor.getInt(0);
+            database.execSQL(
+                    "UPDATE cart_item SET quantity = quantity + ? WHERE id = ?",
+                    new String[]{String.valueOf(quantity), String.valueOf(cartItemId)}
+            );
+        } else {
+            // cart item with the selected product_id does not exist in the cart_item table
+            database.execSQL(
+                    "INSERT INTO cart_item (cart_id, product_id, quantity) VALUES (?, ?, ?)",
+                    new String[]{
+                            String.valueOf(cart.getId()),
+                            String.valueOf(productId),
+                            String.valueOf(quantity)
+                    }
+            );
+        }
+
+        assert cursor != null;
+        cursor.close();
+    }
+
+    public void updateCartItemQuantity(int cartItemId, int quantity) {
+        database.execSQL("UPDATE cart_item SET quantity = ? WHERE id = ?", new String[]{String.valueOf(quantity), String.valueOf(cartItemId)});
+    }
+
+    public void removeCartItem(int cartItemId) {
+        database.execSQL("DELETE FROM cart_item WHERE id = ?", new String[]{String.valueOf(cartItemId)});
+    }
+
+    public void confirmCart() {
+        CartModel cart = getCart();
+        ArrayList<CartItemModel> cartItems = getCartItems();
+
+        database.execSQL("UPDATE cart SET status = ? WHERE id = ?", new String[]{"COMPLETED", String.valueOf(getCart().getId())});
+
+        ContentValues values = new ContentValues();
+        values.put("total_price", CartModel.getTotalPrice(cartItems));
+        values.put("user_id", cart.getUserId());
+        long order_Id = database.insert("order", null, values);
+
+        for (CartItemModel item : cartItems) {
+            ContentValues values2 = new ContentValues();
+            values2.put("order_id", order_Id);
+            values2.put("product_id", item.getProductId());
+            values2.put("quantity", item.getQuantity());
+            database.insert("order_item", null, values2);
+        }
     }
 
 }

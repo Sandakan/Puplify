@@ -3,6 +3,7 @@ package com.adsandakannipunajith.puplify.Models;
 import android.database.Cursor;
 
 import com.adsandakannipunajith.puplify.App;
+import com.adsandakannipunajith.puplify.DAO.ProductDAO;
 
 import java.util.ArrayList;
 
@@ -38,5 +39,16 @@ public class CartModel {
                 userId,
                 cursor.getString(cursor.getColumnIndexOrThrow("status"))
         );
+    }
+
+    public static double getTotalPrice(ArrayList<CartItemModel> cartItems) {
+        ProductDAO productDAO = new ProductDAO();
+        double totalPrice = 0;
+
+        for (CartItemModel cartItem : cartItems) {
+            ProductModel product = productDAO.getProduct(cartItem.getProductId());
+            totalPrice += product.getPrice() * cartItem.getQuantity();
+        }
+        return totalPrice;
     }
 }

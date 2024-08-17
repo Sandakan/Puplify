@@ -166,4 +166,13 @@
     <string name="add_to_cart">Add to Cart</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="reviews">Reviews</string>
+    <string name="add_review">Add Review</string>
+    <string name="add_review_input_hint">My nice review</string>
+    <string name="all_products">All Products</string>
+    <string name="my_cart">My Cart</string>
+    <string name="cart_is_empty">Your cart is empty</string>
+    <string name="confirm_order">Confirm Order</string>
+    <string name="sub_total">Sub-total</string>
+    <string name="item_count">Item count</string>
 </resources>

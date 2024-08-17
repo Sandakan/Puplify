@@ -30,4 +30,13 @@ public class ProductDAO {
         return products;
 
     }
+
+    public ProductModel getProduct(int id) {
+        Cursor cursor = database.query(ProductModel.TABLE_NAME, null, "id = ?", new String[]{String.valueOf(id)}, null, null, null);
+        cursor.moveToFirst();
+        ProductModel product = ProductModel.fromCursor(cursor);
+        cursor.close();
+        return product;
+
+    }
 }

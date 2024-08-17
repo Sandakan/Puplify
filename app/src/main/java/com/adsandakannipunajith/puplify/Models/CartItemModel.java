@@ -8,17 +8,15 @@ public class CartItemModel {
     private final int productId;
     private final int cartId;
     private final int quantity;
-    private final ProductModel product;
 
     public static String TABLE_NAME = "cart_item";
 
 
-    public CartItemModel(int id, int productId, int cartId, int quantity, ProductModel product) {
+    public CartItemModel(int id, int productId, int cartId, int quantity) {
         this.id = id;
         this.productId = productId;
         this.cartId = cartId;
         this.quantity = quantity;
-        this.product = product;
     }
 
     public int getId() {
@@ -37,17 +35,12 @@ public class CartItemModel {
         return quantity;
     }
 
-    public ProductModel getProduct() {
-        return product;
-    }
-
     public static CartItemModel fromCursor(Cursor cursor) {
         return new CartItemModel(
                 cursor.getInt(cursor.getColumnIndexOrThrow("id")),
                 cursor.getInt(cursor.getColumnIndexOrThrow("product_id")),
                 cursor.getInt(cursor.getColumnIndexOrThrow("cart_id")),
-                cursor.getInt(cursor.getColumnIndexOrThrow("quantity")),
-                ProductModel.fromCursor(cursor)
+                cursor.getInt(cursor.getColumnIndexOrThrow("quantity"))
         );
     }
 }

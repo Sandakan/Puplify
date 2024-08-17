@@ -42,7 +42,22 @@ public class UserDAO {
         Cursor cursor = db.rawQuery("SELECT * FROM user WHERE email=? LIMIT 1", new String[]{email});
         if (cursor != null && cursor.moveToFirst()) {
             // Retrieve user data from the cursor
-            return UserModel.fromCursor(cursor);
+            UserModel model = UserModel.fromCursor(cursor);
+
+            cursor.close();
+            return model;
+        }
+
+        return null;
+    }
+
+    public UserModel getUser(int userId) {
+        Cursor cursor = db.rawQuery("SELECT * FROM user WHERE id=? LIMIT 1", new String[]{String.valueOf(userId)});
+        if (cursor != null && cursor.moveToFirst()) {
+            // Retrieve user data from the cursor
+            UserModel model = UserModel.fromCursor(cursor);
+            cursor.close();
+            return model;
         }
 
         return null;

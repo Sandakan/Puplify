@@ -123,6 +123,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "(9, 'Omega-3 Fish Oil Supplement', 'OmegaHealth', 'Supplement', 'All Ages', 'Omega-3 fish oil supplement to promote a healthy coat and skin.', 5999.00, " + omega_3_fish_oil_supplement + "),\n" +
             "(10, 'Probiotic Digestive Health', 'DigestWell', 'Supplement', 'All Ages', 'Probiotic supplement for improving digestive health and immune support.', 6599.00, " + probiotic_digestive_health + ");\n";
 
+    private static final String reviewSeeds = "INSERT INTO review (product_id, user_id, rating, comment, created_at) VALUES\n" +
+            "(1, 1, 5, 'My dog absolutely loves this food! High quality and great nutrition.', CURRENT_TIMESTAMP),\n" +
+            "(2, 1, 4, 'Great product but a bit pricey. My dog enjoys it.', CURRENT_TIMESTAMP),\n" +
+            "(3, 1, 5, 'Excellent quality treats! Perfect for training sessions.', CURRENT_TIMESTAMP),\n" +
+            "(4, 1, 3, 'The kibble size is too big for my small dog, but the ingredients are good.', CURRENT_TIMESTAMP),\n" +
+            "(5, 1, 4, 'My puppy loves this! It’s very nutritious and keeps her healthy.', CURRENT_TIMESTAMP),\n" +
+            "(6, 1, 5, 'Amazing product! My dog’s coat looks shiny and healthy.', CURRENT_TIMESTAMP),\n" +
+            "(7, 1, 4, 'Good product, but the packaging could be better.', CURRENT_TIMESTAMP),\n" +
+            "(8, 1, 5, 'My dog has never been happier with a food product! Highly recommend.', CURRENT_TIMESTAMP),\n" +
+            "(9, 1, 3, 'It’s okay, but my dog prefers other brands.', CURRENT_TIMESTAMP),\n" +
+            "(10, 1, 5, 'Perfect for my senior dog. Easy to digest and nutritious.', CURRENT_TIMESTAMP);\n";
+
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -144,6 +156,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Insert sample data
         db.execSQL(userSeeds);
         db.execSQL(productSeeds);
+        db.execSQL(reviewSeeds);
     }
 
     @Override
