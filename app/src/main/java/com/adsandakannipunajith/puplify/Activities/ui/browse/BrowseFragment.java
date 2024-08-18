@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
@@ -20,7 +19,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.adsandakannipunajith.puplify.Adapters.ProductAdapter;
 import com.adsandakannipunajith.puplify.DAO.ProductDAO;
 import com.adsandakannipunajith.puplify.Models.ProductModel;
-import com.adsandakannipunajith.puplify.R;
 import com.adsandakannipunajith.puplify.databinding.FragmentBrowseBinding;
 
 import java.util.ArrayList;
@@ -30,6 +28,7 @@ public class BrowseFragment extends Fragment {
     private FragmentBrowseBinding binding;
     private SearchView searchView;
     private TextView searchViewLabel;
+    private TextView noSearchResultsText;
     private Spinner productBrandFiltersSpinner, productTypeFiltersSpinner, productAgeGroupFiltersSpinner;
     private ProductAdapter productAdapter;
 
@@ -46,6 +45,7 @@ public class BrowseFragment extends Fragment {
         binding = FragmentBrowseBinding.inflate(inflater, container, false);
         searchView = binding.searchView;
         searchViewLabel = binding.searchViewLabel;
+        noSearchResultsText = binding.noSearchResultsText;
 
         productBrandFiltersSpinner = binding.searchBrandFiltersSpinner;
         productTypeFiltersSpinner = binding.searchFoodTypeFiltersSpinner;
@@ -63,6 +63,7 @@ public class BrowseFragment extends Fragment {
         productDAO = new ProductDAO();
         products = productDAO.getProducts();
         productAdapter = new ProductAdapter(getContext(), products);
+        handleNoSearchResults(products);
 
         productBrandFilters.addAll(productDAO.getProductBrands());
         productTypeFilters.addAll(productDAO.getProductTypes());
@@ -151,10 +152,18 @@ public class BrowseFragment extends Fragment {
         return binding.getRoot();
     }
 
+    public void handleNoSearchResults(ArrayList<ProductModel> products) {
+        if (products.isEmpty()) {
+            noSearchResultsText.setVisibility(View.VISIBLE);
+        } else {
+            noSearchResultsText.setVisibility(View.GONE);
+        }
+    }
+
     public void updateProducts() {
         products = productDAO.searchProducts(searchText, selectedProductBrandFilter, selectedProductTypeFilter, selectedProductAgeGroupFilter);
         productAdapter.updateProducts(products);
-
+        handleNoSearchResults(products);
     }
 
     @Override
