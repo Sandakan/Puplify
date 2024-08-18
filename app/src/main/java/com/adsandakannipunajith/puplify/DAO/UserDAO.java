@@ -63,5 +63,28 @@ public class UserDAO {
         return null;
     }
 
+    public void updateProfileInformation(int userId, String firstName, String lastName, String email, String password, String address) {
+        ContentValues values = new ContentValues();
+        if (firstName != null && !firstName.isEmpty()) {
+            values.put("first_name", firstName);
+        }
+
+        if (lastName != null && !lastName.isEmpty()) {
+            values.put("last_name", lastName);
+        }
+
+        if (email != null && !email.isEmpty()) {
+            values.put("email", email);
+        }
+
+        if (address != null && !address.isEmpty()) {
+            values.put("address", address);
+        }
+
+        if (password != null && !password.isEmpty()) {
+            values.put("password", password);
+        }
+        db.update("user", values, "id=?", new String[]{String.valueOf(userId)});
+    }
 
 }

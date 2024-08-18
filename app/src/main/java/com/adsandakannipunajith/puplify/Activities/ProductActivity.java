@@ -35,8 +35,12 @@ public class ProductActivity extends AppCompatActivity {
     CartDAO cartDAO;
     ReviewDAO reviewDAO;
 
+    TextView productBrandTitle;
     TextView productName;
     TextView productDescription;
+    TextView productBrand;
+    TextView productType;
+    TextView productAgeGroup;
     TextView productPrice;
     ImageView productImage;
     TextView productQuantity;
@@ -65,6 +69,10 @@ public class ProductActivity extends AppCompatActivity {
         });
 
 
+        productBrandTitle = findViewById(R.id.product_info_brand_title);
+        productBrand = findViewById(R.id.product_info_brand);
+        productType = findViewById(R.id.product_info_food_type);
+        productAgeGroup = findViewById(R.id.product_info_age_group);
         productName = findViewById(R.id.product_info_name);
         productDescription = findViewById(R.id.product_info_description);
         productPrice = findViewById(R.id.product_info_price);
@@ -95,6 +103,10 @@ public class ProductActivity extends AppCompatActivity {
         updateAdapterData(reviews);
         averageRating = reviewDAO.getAverageRating(reviews);
 
+        productBrandTitle.setText(product.getBrand());
+        productBrand.setText(product.getBrand());
+        productType.setText(product.getType());
+        productAgeGroup.setText(product.getAgeGroup());
         productName.setText(product.getName());
         productDescription.setText(product.getDescription());
         productPrice.setText(String.format("LKR %s", String.format("%.2f", product.getPrice())));

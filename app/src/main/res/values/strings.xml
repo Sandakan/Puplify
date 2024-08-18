@@ -178,4 +178,18 @@
     <string name="educational_content_title">Educational Content</string>
     <string name="more_info">More Info</string>
     <string name="title_educational_content">Educational Content</string>
+    <string name="title_my_profile">My Profile</string>
+    <string name="update_profile_information">Update Profile Information</string>
+    <string name="update_payment_methods">Update Payment Methods</string>
+    <string name="address_cannot_be_empty">Address cannot be empty</string>
+    <string name="profile_updated">Profile updated successfully.</string>
+    <string name="passwords_do_not_match">Password and Confirm Password doesn\'t match</string>
+    <string name="card_number_input_label">Card Number</string>
+    <string name="card_holder_name_input_label">Card Holder Name</string>
+    <string name="expiration_date_input_label">Expiration Date</string>
+    <string name="cvv_input_label">CVV</string>
+    <string name="brand_label">Brand</string>
+    <string name="food_type_label">Food type</string>
+    <string name="age_group_label">Age group </string>
+    <string name="invalid_email">Invalid email</string>
 </resources>

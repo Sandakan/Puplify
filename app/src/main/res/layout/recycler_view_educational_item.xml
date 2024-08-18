@@ -40,7 +40,6 @@
                 android:text="article type"
                 android:textAllCaps="true"
                 android:textSize="12sp"
-                android:textStyle="italic"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/educational_item_image" />
 

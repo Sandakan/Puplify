@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.UpdatePaymentMethodActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint"
+        android:padding="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Activities.UpdatePaymentMethodActivity">
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/update_payment_methods"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/update_card_holder_name_input_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/card_holder_name_input_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView12"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+        <EditText
+            android:id="@+id/update_card_holder_name_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/card_holder_name_input_label"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="@+id/update_card_holder_name_input_label"
+            app:layout_constraintStart_toStartOf="@+id/update_card_holder_name_input_label"
+            app:layout_constraintTop_toBottomOf="@+id/update_card_holder_name_input_label" />
+
+        <TextView
+            android:id="@+id/update_card_holder_name_input_error_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/error"
+            app:layout_constraintTop_toBottomOf="@+id/update_card_holder_name_input"
+            tools:layout_editor_absoluteX="12dp" />
+
+        <TextView
+            android:id="@+id/update_card_number_input_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/card_number_input_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/update_card_holder_name_input_error_message"
+            app:layout_constraintTop_toBottomOf="@+id/update_card_holder_name_input_error_message" />
+
+        <EditText
+            android:id="@+id/update_card_number_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/card_number_input_label"
+            android:inputType="numberSigned"
+            app:layout_constraintEnd_toEndOf="@+id/update_card_number_input_label"
+            app:layout_constraintStart_toStartOf="@+id/update_card_number_input_label"
+            app:layout_constraintTop_toBottomOf="@+id/update_card_number_input_label" />
+
+        <TextView
+            android:id="@+id/update_card_number_input_error_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/error"
+            app:layout_constraintTop_toBottomOf="@+id/update_card_number_input"
+            tools:layout_editor_absoluteX="12dp" />
+
+        <TextView
+            android:id="@+id/update_expiration_date_input_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/expiration_date_input_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/update_card_holder_name_input_error_message"
+            app:layout_constraintTop_toBottomOf="@+id/update_card_number_input_error_message" />
+
+        <EditText
+            android:id="@+id/update_expiration_date_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/expiration_date_input_label"
+            android:inputType="date"
+            app:layout_constraintEnd_toEndOf="@+id/update_expiration_date_input_label"
+            app:layout_constraintStart_toStartOf="@+id/update_expiration_date_input_label"
+            app:layout_constraintTop_toBottomOf="@+id/update_expiration_date_input_label" />
+
+        <TextView
+            android:id="@+id/update_expiration_date_input_error_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/error"
+            app:layout_constraintTop_toBottomOf="@+id/update_expiration_date_input"
+            tools:layout_editor_absoluteX="12dp" />
+
+        <TextView
+            android:id="@+id/update_cvv_input_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/cvv_input_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/update_card_holder_name_input_error_message"
+            app:layout_constraintTop_toBottomOf="@+id/update_expiration_date_input_error_message" />
+
+        <EditText
+            android:id="@+id/update_cvv_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/cvv_input_label"
+            android:inputType="numberSigned"
+            app:layout_constraintEnd_toEndOf="@+id/update_cvv_input_label"
+            app:layout_constraintStart_toStartOf="@+id/update_cvv_input_label"
+            app:layout_constraintTop_toBottomOf="@+id/update_cvv_input_label" />
+
+        <TextView
+            android:id="@+id/update_cvv_input_error_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/error"
+            app:layout_constraintTop_toBottomOf="@+id/update_cvv_input"
+            tools:layout_editor_absoluteX="12dp" />
+
+
+        <Button
+            android:id="@+id/update_payment_method_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:text="@string/update_payment_methods"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/update_cvv_input_error_message" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

@@ -7,6 +7,7 @@ import com.adsandakannipunajith.puplify.Activities.ui.browse.BrowseFragment;
 import com.adsandakannipunajith.puplify.Activities.ui.cart.CartFragment;
 import com.adsandakannipunajith.puplify.Activities.ui.home.HomeFragment;
 import com.adsandakannipunajith.puplify.Activities.ui.info.InfoFragment;
+import com.adsandakannipunajith.puplify.Activities.ui.profile.ProfileFragment;
 import com.adsandakannipunajith.puplify.R;
 import com.adsandakannipunajith.puplify.databinding.ActivityDashboardBinding;
 
@@ -46,6 +47,11 @@ public class DashboardActivity extends AppCompatActivity {
 
             if (menuItemId == R.id.navigation_info) {
                 replaceFragment(new InfoFragment());
+                return true;
+            }
+
+            if (menuItemId == R.id.navigation_profile) {
+                replaceFragment(new ProfileFragment());
                 return true;
             }
 

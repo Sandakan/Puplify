@@ -29,10 +29,10 @@
         android:label="@string/title_educational_content"
         tools:layout="@layout/fragment_info" />
 
-    <!--    <fragment-->
-    <!--        android:id="@+id/navigation_dashboard"-->
-    <!--        android:name="com.adsandakannipunajith.puplify.Activities.ui.dashboard.DashboardFragment"-->
-    <!--        android:label="@string/title_dashboard"-->
-    <!--        tools:layout="@layout/fragment_dashboard" />-->
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.adsandakannipunajith.puplify.Activities.ui.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
 
 </navigation>

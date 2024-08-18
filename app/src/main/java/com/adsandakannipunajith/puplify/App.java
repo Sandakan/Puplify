@@ -12,6 +12,7 @@ public class App extends Application {
 
     private static SQLiteDatabase database;
     private static SharedPreferences sharedPreferences;
+    private static Context context;
 
     @Override
     public void onCreate() {
@@ -22,6 +23,8 @@ public class App extends Application {
 //        sharedPreferences.edit().clear().apply();
         // Initialize SQLite database
         database = new DatabaseHelper(this).getWritableDatabase();
+
+        context = getApplicationContext();
 
     }
 
@@ -35,6 +38,7 @@ public class App extends Application {
         return sharedPreferences;
     }
 
-    // SQLiteOpenHelper class for managing database creation and version management
-
+    public static Context getContext() {
+        return context;
+    }
 }

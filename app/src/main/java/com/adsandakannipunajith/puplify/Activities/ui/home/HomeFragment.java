@@ -9,13 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.adsandakannipunajith.puplify.Adapters.CartItemAdapter;
 import com.adsandakannipunajith.puplify.Adapters.ProductAdapter;
-
-import com.adsandakannipunajith.puplify.Adapters.ReviewAdapter;
-import com.adsandakannipunajith.puplify.DAO.CartDAO;
 import com.adsandakannipunajith.puplify.DAO.ProductDAO;
-import com.adsandakannipunajith.puplify.Models.CartItemModel;
 import com.adsandakannipunajith.puplify.Models.ProductModel;
 import com.adsandakannipunajith.puplify.databinding.FragmentHomeBinding;
 
