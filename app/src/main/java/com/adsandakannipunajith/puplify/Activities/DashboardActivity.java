@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.adsandakannipunajith.puplify.Activities.ui.browse.BrowseFragment;
 import com.adsandakannipunajith.puplify.Activities.ui.cart.CartFragment;
 import com.adsandakannipunajith.puplify.Activities.ui.home.HomeFragment;
+import com.adsandakannipunajith.puplify.Activities.ui.info.InfoFragment;
 import com.adsandakannipunajith.puplify.R;
 import com.adsandakannipunajith.puplify.databinding.ActivityDashboardBinding;
 
@@ -40,6 +41,11 @@ public class DashboardActivity extends AppCompatActivity {
 
             if (menuItemId == R.id.navigation_cart) {
                 replaceFragment(new CartFragment());
+                return true;
+            }
+
+            if (menuItemId == R.id.navigation_info) {
+                replaceFragment(new InfoFragment());
                 return true;
             }
 

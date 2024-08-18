@@ -20,10 +20,10 @@ import com.adsandakannipunajith.puplify.DAO.ProductDAO;
 import com.adsandakannipunajith.puplify.Models.CartItemModel;
 import com.adsandakannipunajith.puplify.Models.ProductModel;
 import com.adsandakannipunajith.puplify.R;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.concurrent.Callable;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHolder> {
 
@@ -66,7 +66,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
 
         holder.cartItemName.setText(product.getName());
         holder.cartItemPrice.setText(String.format("LKR %s", String.format("%.2f", product.getPrice())));
-        holder.cartItemImage.setImageResource(product.getImage());
+        Glide.with(context).load(product.getImageUrl()).into(holder.cartItemImage);
         holder.cartItemQuantity.setText(String.format("%d", quantity[0]));
         holder.cartItemDeleteButton.setOnClickListener(view -> onRemoveCartItem(product, cartItem));
 

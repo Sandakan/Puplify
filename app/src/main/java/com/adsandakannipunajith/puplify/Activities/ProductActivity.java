@@ -22,6 +22,7 @@ import com.adsandakannipunajith.puplify.DAO.ReviewDAO;
 import com.adsandakannipunajith.puplify.Models.ProductModel;
 import com.adsandakannipunajith.puplify.Models.ReviewModel;
 import com.adsandakannipunajith.puplify.R;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -97,7 +98,7 @@ public class ProductActivity extends AppCompatActivity {
         productName.setText(product.getName());
         productDescription.setText(product.getDescription());
         productPrice.setText(String.format("LKR %s", String.format("%.2f", product.getPrice())));
-        productImage.setImageResource(product.getImage());
+        Glide.with(this).load(product.getImageUrl()).into(productImage);
         productReviewCount.setText(String.format("%s reviews", String.valueOf(reviews.size())));
 
         setRating(averageRating);

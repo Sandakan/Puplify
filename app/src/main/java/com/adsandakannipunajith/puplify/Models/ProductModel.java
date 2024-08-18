@@ -2,8 +2,6 @@ package com.adsandakannipunajith.puplify.Models;
 
 import android.database.Cursor;
 
-import com.adsandakannipunajith.puplify.R;
-
 public class ProductModel {
 
     private final int id;
@@ -13,12 +11,12 @@ public class ProductModel {
     private final String brand;
     private final String type;
     private final String ageGroup;
-    private final int image;
+    private final String imageUrl;
 
     public static String TABLE_NAME = "product";
 
 
-    public ProductModel(int id, String name, String description, double price, String brand, String type, String ageGroup, int image) {
+    public ProductModel(int id, String name, String description, double price, String brand, String type, String ageGroup, String imageUrl) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -26,7 +24,7 @@ public class ProductModel {
         this.brand = brand;
         this.type = type;
         this.ageGroup = ageGroup;
-        this.image = image;
+        this.imageUrl = imageUrl;
     }
 
 
@@ -58,8 +56,8 @@ public class ProductModel {
         return ageGroup;
     }
 
-    public int getImage() {
-        return image;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
     public static ProductModel fromCursor(Cursor cursor) {
@@ -71,7 +69,7 @@ public class ProductModel {
                 cursor.getString(cursor.getColumnIndexOrThrow("brand")),
                 cursor.getString(cursor.getColumnIndexOrThrow("type")),
                 cursor.getString(cursor.getColumnIndexOrThrow("age_group"))
-                , cursor.getInt(cursor.getColumnIndexOrThrow("image"))
+                , cursor.getString(cursor.getColumnIndexOrThrow("image_url"))
         );
 
     }

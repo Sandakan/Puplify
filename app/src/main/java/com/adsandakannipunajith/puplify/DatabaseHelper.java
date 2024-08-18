@@ -22,7 +22,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "\t\"id\" INTEGER NOT NULL UNIQUE,\n" +
             "\t\"name\" TEXT NOT NULL,\n" +
             "\t\"description\" TEXT NOT NULL,\n" +
-            "\t\"image\" INTEGER NOT NULL,\n" +
+            "\t\"image_url\" TEXT NOT NULL,\n" +
             "\t\"brand\" TEXT NOT NULL,\n" +
             "\t\"type\" TEXT NOT NULL,\n" +
             "\t\"age_group\" TEXT NOT NULL,\n" +
@@ -90,6 +90,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "\t\"id\" INTEGER NOT NULL UNIQUE,\n" +
             "\t\"title\" TEXT NOT NULL,\n" +
             "\t\"description\" TEXT NOT NULL,\n" +
+            "\t\"image_url\" TEXT NOT NULL,\n" +
             "\t\"url\" TEXT NOT NULL,\n" +
             "\t\"type\" TEXT NOT NULL,\n" +
             "\tPRIMARY KEY(\"id\")\t\n" +
@@ -99,29 +100,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "('John', 'Doe', 'johndoe@gmail.com', '12345'),\n" +
             "('Jane', 'Doe', 'janedoe@gmailcom', '12345');";
 
-    private static final int kibbles_delight = R.drawable.kibbles_delight;
-    private static final int puppy_growth_formula = R.drawable.puppy_growth_formula;
-    private static final int senior_wellness_blend = R.drawable.senior_wellness_blend;
-    private static final int chicken_and_rice_canned = R.drawable.chicken_and_rice_canned;
-    private static final int salmon_and_sweet_potato = R.drawable.salmon_and_sweet_potato;
-    private static final int all_natural_puppy_treats = R.drawable.all_natural_puppy_treats;
-    private static final int grain_free_chicken_bites = R.drawable.grain_free_chicken_bites;
-    private static final int beef_and_veggie_stew = R.drawable.beef_and_veggie_stew;
-    private static final int omega_3_fish_oil_supplement = R.drawable.omega_3_fish_oil_supplement;
-    private static final int probiotic_digestive_health = R.drawable.probiotic_digestive_health;
 
-
-    private static final String productSeeds = "INSERT INTO \"product\" (\"id\", \"name\", \"brand\", \"type\", \"age_group\", \"description\", \"price\", \"image\") VALUES\n" +
-            "(1, 'Kibble Delight', 'BestBites', 'Dry Food', 'Adult', 'A balanced dry kibble made with chicken and wholesome grains for adult dogs.', 8999.00, " + kibbles_delight + "),\n" +
-            "(2, 'Puppy Growth Formula', 'PupGrow', 'Dry Food', 'Puppy', 'A specially formulated dry food for growing puppies, enriched with essential nutrients.', 10499.00, " + puppy_growth_formula + "),\n" +
-            "(3, 'Senior Wellness Blend', 'SeniorCare', 'Dry Food', 'Senior', 'A nutrient-rich blend designed to support the health of senior dogs.', 11999.00, " + senior_wellness_blend + "),\n" +
-            "(4, 'Chicken & Rice Canned', 'TenderMeal', 'Canned Food', 'All Ages', 'A delicious canned dog food made with real chicken and rice for easy digestion.', 7499.00, " + chicken_and_rice_canned + "),\n" +
-            "(5, 'Salmon & Sweet Potato', 'OceanicFeast', 'Dry Food', 'Adult', 'A grain-free formula featuring high-quality salmon and sweet potatoes.', 9699.00, " + salmon_and_sweet_potato + "),\n" +
-            "(6, 'All Natural Puppy Treats', 'Treats4Puppies', 'Treats', 'Puppy', 'Soft and tasty treats made from all-natural ingredients, perfect for puppies.', 3999.00, " + all_natural_puppy_treats + "),\n" +
-            "(7, 'Grain-Free Chicken Bites', 'GrainFreeDelight', 'Treats', 'All Ages', 'Grain-free chicken bites packed with protein for healthy dogs of all sizes.', 4499.00, " + grain_free_chicken_bites + "),\n" +
-            "(8, 'Beef & Veggie Stew', 'HeartilyBeef', 'Canned Food', 'All Ages', 'A hearty stew made with real beef and vegetables for a nutritious meal.', 8399.00, " + beef_and_veggie_stew + "),\n" +
-            "(9, 'Omega-3 Fish Oil Supplement', 'OmegaHealth', 'Supplement', 'All Ages', 'Omega-3 fish oil supplement to promote a healthy coat and skin.', 5999.00, " + omega_3_fish_oil_supplement + "),\n" +
-            "(10, 'Probiotic Digestive Health', 'DigestWell', 'Supplement', 'All Ages', 'Probiotic supplement for improving digestive health and immune support.', 6599.00, " + probiotic_digestive_health + ");\n";
+    private static final String productSeeds = "INSERT INTO \"product\" (\"id\", \"name\", \"brand\", \"type\", \"age_group\", \"description\", \"price\", \"image_url\") VALUES\n" +
+            "(1, 'Kibble Delight', 'BestBites', 'Dry Food', 'Adult', 'A balanced dry kibble made with chicken and wholesome grains for adult dogs.', 8999.00, 'https://images.freshop.com/00070155124630/a64415bb61f195fb139088910c07aac0_large.png'),\n" +
+            "(2, 'Puppy Growth Formula', 'PupGrow', 'Dry Food', 'Puppy', 'A specially formulated dry food for growing puppies, enriched with essential nutrients.', 10499.00, 'https://i.pinimg.com/736x/b0/ed/11/b0ed111c43c2a7f47b1e3a91e1e51091.jpg'),\n" +
+            "(3, 'Senior Wellness Blend', 'SeniorCare', 'Dry Food', 'Senior', 'A nutrient-rich blend designed to support the health of senior dogs.', 11999.00, 'https://th.bing.com/th/id/OIP.J2fly4bd_erfXaTQvizRwgHaHa?rs=1&pid=ImgDetMain'),\n" +
+            "(4, 'Chicken & Rice Canned', 'TenderMeal', 'Canned Food', 'All Ages', 'A delicious canned dog food made with real chicken and rice for easy digestion.', 7499.00, 'https://i5.walmartimages.com/asr/d6a31d68-43cd-49f6-8cde-4903d84d0882_2.fbf1601ef100cfd7b995327315463069.jpeg?odnWidth=612&odnHeight=612&odnBg=ffffff'),\n" +
+            "(5, 'Salmon & Sweet Potato', 'OceanicFeast', 'Dry Food', 'Adult', 'A grain-free formula featuring high-quality salmon and sweet potatoes.', 9699.00, 'https://i5.walmartimages.com/asr/6f5c9e8b-48b8-413a-b88d-4b27ba42dd4b.a3f55c6d927ed8d278e3aa8e4f9581b6.jpeg'),\n" +
+            "(6, 'All Natural Puppy Treats', 'Treats4Puppies', 'Treats', 'Puppy', 'Soft and tasty treats made from all-natural ingredients, perfect for puppies.', 3999.00, 'https://th.bing.com/th/id/OIP.bB2wgzL6KIrsGSL1MSYzowHaHa?rs=1&pid=ImgDetMain'),\n" +
+            "(7, 'Grain-Free Chicken Bites', 'GrainFreeDelight', 'Treats', 'All Ages', 'Grain-free chicken bites packed with protein for healthy dogs of all sizes.', 4499.00,'https://th.bing.com/th/id/R.f26d0941356d5240f4b5dd336a90ca34?rik=vqJDJQE0wQVrjA&pid=ImgRaw&r=0'),\n" +
+            "(8, 'Beef & Veggie Stew', 'HeartilyBeef', 'Canned Food', 'All Ages', 'A hearty stew made with real beef and vegetables for a nutritious meal.', 8399.00, 'https://th.bing.com/th/id/OIP.-usUFwCCjlJ3Kkt93m1eLAHaHa?rs=1&pid=ImgDetMain'),\n" +
+            "(9, 'Omega-3 Fish Oil Supplement', 'OmegaHealth', 'Supplement', 'All Ages', 'Omega-3 fish oil supplement to promote a healthy coat and skin.', 5999.00, 'https://i5.walmartimages.com/asr/784f9a72-8a23-482e-8a4f-258e1b032ef6.451c9d186a506f36a0ffbcd7509abb05.jpeg'),\n" +
+            "(10, 'Probiotic Digestive Health', 'DigestWell', 'Supplement', 'All Ages', 'Probiotic supplement for improving digestive health and immune support.', 6599.00, 'https://th.bing.com/th/id/R.d6ba2d8a3f475f277bd148ed1d17a2cf?rik=mWT64vGdPYjbXw&pid=ImgRaw&r=0');";
 
     private static final String reviewSeeds = "INSERT INTO review (product_id, user_id, rating, comment, created_at) VALUES\n" +
             "(1, 1, 5, 'My dog absolutely loves this food! High quality and great nutrition.', CURRENT_TIMESTAMP),\n" +
@@ -134,6 +124,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "(8, 1, 5, 'My dog has never been happier with a food product! Highly recommend.', CURRENT_TIMESTAMP),\n" +
             "(9, 1, 3, 'It’s okay, but my dog prefers other brands.', CURRENT_TIMESTAMP),\n" +
             "(10, 1, 5, 'Perfect for my senior dog. Easy to digest and nutritious.', CURRENT_TIMESTAMP);\n";
+
+    private static final String educationContentSeeds = "INSERT INTO educational_content (title, description, image_url, url, type) VALUES\n" +
+            "('Food allergies in dogs — a plan for change', 'Getting to the bottom of food allergies in your dog requires a comprehensive plan for change that includes an elimination diet made from novel protein and carbohydrate sources.', 'https://awmagazine.wpenginepowered.com/wp-content/uploads/shutterstock_1979238968.jpg', 'https://animalwellnessmagazine.com/food-allergies-in-dogs-a-plan-for-change/', 'ARTICLE'),\n" +
+            "('Natural Flea and Tick Prevention (That Really Works!)', 'Pet parents have long been torn between choosing potentially dangerous synthetic flea and tick prevention and natural solutions that don’t always work. Earth Animal has created an array of natural products that protect dogs and cats from both the inside and outside against fleas and ticks.', 'https://awmagazine.wpenginepowered.com/wp-content/uploads/shutterstock_681753241-e1710951972688.jpg', 'https://animalwellnessmagazine.com/natural-flea-and-tick-prevention-that-really-works/', 'ARTICLE'),\n" +
+            "('Did You Know Your Dog Needs Canine-Specific Probiotics?', 'The right probiotics can have numerous health benefits for dogs. However, human probiotics that are often relabeled for dogs likely don’t survive the digestive tract. PetCultures has the most comprehensive and effective formulas of canine-specific probiotics around, and they’re design to survive the digestive tract and deliver results!', 'https://awmagazine.wpenginepowered.com/wp-content/uploads/Santiago_Gelvez_With_Dog_Cropped-1-e1711988688577.png', 'https://animalwellnessmagazine.com/did-you-know-your-dog-needs-canine-specific-probiotics/', 'ARTICLE');\n";
 
 
     public DatabaseHelper(Context context) {
@@ -157,6 +152,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(userSeeds);
         db.execSQL(productSeeds);
         db.execSQL(reviewSeeds);
+        db.execSQL(educationContentSeeds);
     }
 
     @Override

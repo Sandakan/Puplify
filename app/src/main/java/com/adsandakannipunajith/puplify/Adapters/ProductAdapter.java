@@ -16,9 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.adsandakannipunajith.puplify.Activities.ProductActivity;
 import com.adsandakannipunajith.puplify.DAO.CartDAO;
-import com.adsandakannipunajith.puplify.Models.CartModel;
 import com.adsandakannipunajith.puplify.Models.ProductModel;
 import com.adsandakannipunajith.puplify.R;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -61,7 +61,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         holder.productName.setText(products.get(position).getName());
         holder.productDescription.setText(products.get(position).getDescription());
         holder.productPrice.setText(String.format("LKR %s", String.format("%.2f", products.get(position).getPrice())));
-        holder.productImage.setImageResource(products.get(position).getImage());
+        Glide.with(context).load(products.get(position).getImageUrl()).centerCrop().into(holder.productImage);
         holder.productAddToCartButton.setOnClickListener(view -> {
             // Add product to cart
             if (cartDAO == null) {
