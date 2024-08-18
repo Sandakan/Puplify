@@ -192,4 +192,6 @@
     <string name="food_type_label">Food type</string>
     <string name="age_group_label">Age group </string>
     <string name="invalid_email">Invalid email</string>
+    <string name="searchbar_hint">Search for products</string>
+    <string name="logout">Logout</string>
 </resources>

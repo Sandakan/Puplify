@@ -4,21 +4,94 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
+    android:padding="16dp"
     tools:context=".Activities.ui.browse.BrowseFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:paddingBottom="?attr/actionBarSize">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/materialToolbar"
+        <SearchView
+            android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
+            android:background="@color/on_secondary"
+            android:orientation="horizontal"
+            android:queryHint="Search for products"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+        </SearchView>
+
+        <TextView
+            android:id="@+id/search_view_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/searchbar_hint"
+            app:layout_constraintBottom_toBottomOf="@+id/searchView"
+            app:layout_constraintEnd_toEndOf="@+id/searchView"
+            app:layout_constraintHorizontal_bias="0.18"
+            app:layout_constraintStart_toStartOf="@+id/searchView"
+            app:layout_constraintTop_toTopOf="@+id/searchView" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            app:layout_constraintEnd_toEndOf="@+id/searchView"
+            app:layout_constraintStart_toStartOf="@+id/searchView"
+            app:layout_constraintTop_toBottomOf="@+id/searchView">
+
+            <Spinner
+                android:id="@+id/search_food_type_filters_spinner"
+                android:layout_width="184dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="16dp"
+                android:spinnerMode="dialog"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/search_brand_filters_spinner"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/search_brand_filters_spinner"
+                android:layout_width="167dp"
+                android:layout_height="23dp"
+                android:layout_marginTop="16dp"
+                android:spinnerMode="dialog"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/search_age_group_filters_spinner"
+                android:layout_width="154dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="16dp"
+                android:spinnerMode="dialog"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/search_food_type_filters_spinner"
+                app:layout_constraintStart_toEndOf="@+id/search_brand_filters_spinner"
+                app:layout_constraintTop_toBottomOf="@+id/search_brand_filters_spinner" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/search_product_items_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
