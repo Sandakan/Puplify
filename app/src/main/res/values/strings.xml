@@ -180,7 +180,7 @@
     <string name="title_educational_content">Educational Content</string>
     <string name="title_my_profile">My Profile</string>
     <string name="update_profile_information">Update Profile Information</string>
-    <string name="update_payment_methods">Update Payment Methods</string>
+    <string name="update_payment_method">Update Payment Method</string>
     <string name="address_cannot_be_empty">Address cannot be empty</string>
     <string name="profile_updated">Profile updated successfully.</string>
     <string name="passwords_do_not_match">Password and Confirm Password doesn\'t match</string>
@@ -195,4 +195,8 @@
     <string name="searchbar_hint">Search for products</string>
     <string name="logout">Logout</string>
     <string name="no_search_results">No search results found. Try again with a different keyword and filters.</string>
+    <string name="card_holder_name_cannot_be_empty">Card holder name cannot be empty</string>
+    <string name="card_number_cannot_be_empty">Card Number cannot be empty</string>
+    <string name="expiration_date_cannot_be_empty">Expiration date cannot be empty</string>
+    <string name="cvv_cannot_be_empty">CVV cannot be empty</string>
 </resources>

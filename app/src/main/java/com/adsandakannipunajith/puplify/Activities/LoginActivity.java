@@ -2,19 +2,14 @@ package com.adsandakannipunajith.puplify.Activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.adsandakannipunajith.puplify.DAO.UserDAO;
 import com.adsandakannipunajith.puplify.Models.UserModel;
@@ -84,7 +79,6 @@ public class LoginActivity extends AppCompatActivity {
                         .putString("user_last_name", user.getLastName())
                         .apply();
 
-                Toast.makeText(this, "User with id " + user.getId() + " logged in successfully", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, DashboardActivity.class));
                 finish();
             } else {

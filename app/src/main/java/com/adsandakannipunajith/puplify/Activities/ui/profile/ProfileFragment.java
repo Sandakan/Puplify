@@ -1,5 +1,6 @@
 package com.adsandakannipunajith.puplify.Activities.ui.profile;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,12 +13,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.adsandakannipunajith.puplify.Activities.MainActivity;
+import com.adsandakannipunajith.puplify.Activities.UpdatePaymentMethodActivity;
 import com.adsandakannipunajith.puplify.Activities.UpdateProfileInformationActivity;
 import com.adsandakannipunajith.puplify.App;
 import com.adsandakannipunajith.puplify.DAO.UserDAO;
 import com.adsandakannipunajith.puplify.Models.UserModel;
 import com.adsandakannipunajith.puplify.R;
-import com.adsandakannipunajith.puplify.Activities.UpdatePaymentMethodActivity;
 import com.adsandakannipunajith.puplify.databinding.FragmentProfileBinding;
 
 import java.text.ParseException;
@@ -52,6 +54,20 @@ public class ProfileFragment extends Fragment {
             startActivity(intent);
         });
 
+        binding.profileLogoutButton.setOnClickListener(view -> {
+            new AlertDialog.Builder(getContext())
+                    .setTitle("Logout")
+                    .setMessage("Are you sure you want to logout?")
+                    .setPositiveButton("Yes", (dialog, which) -> {
+                        App.getSharedPreferences().edit().clear().apply();
+                        Intent intent = new Intent(getContext(), MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                    })
+                    .setNegativeButton("No", null)
+                    .show();
+        });
+
 
         return binding.getRoot();
     }
@@ -75,6 +91,7 @@ public class ProfileFragment extends Fragment {
             e.printStackTrace();
         }
     }
+
 
     @Override
     public void onResume() {

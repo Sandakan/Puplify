@@ -13,17 +13,29 @@
         android:layout_height="match_parent"
         android:paddingBottom="?attr/actionBarSize">
 
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@android:string/search_go"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <SearchView
             android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:background="@color/on_secondary"
             android:orientation="horizontal"
             android:queryHint="Search for products"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/textView13">
 
         </SearchView>
 
@@ -73,7 +85,7 @@
 
             <Spinner
                 android:id="@+id/search_age_group_filters_spinner"
-                android:layout_width="154dp"
+                android:layout_width="200dp"
                 android:layout_height="22dp"
                 android:layout_marginTop="16dp"
                 android:spinnerMode="dialog"

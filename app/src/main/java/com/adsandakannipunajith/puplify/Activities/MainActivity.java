@@ -8,9 +8,6 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.adsandakannipunajith.puplify.App;
 import com.adsandakannipunajith.puplify.R;
@@ -36,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences preferences = App.getSharedPreferences();
 
         if (preferences.contains("user_email") && preferences.contains("user_id")) {
-            Toast.makeText(this, "You are already logged in", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Welcome back, " + preferences.getString("user_first_name", ""), Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, DashboardActivity.class));
             finish();
         }
