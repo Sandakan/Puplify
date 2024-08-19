@@ -7,31 +7,31 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.adsandakannipunajith.puplify.Activities.ui.home.HomeFragment"
+        android:name="com.adsandakannipunajith.puplify.activities.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_browse"
-        android:name="com.adsandakannipunajith.puplify.Activities.ui.browse.BrowseFragment"
+        android:name="com.adsandakannipunajith.puplify.activities.ui.browse.BrowseFragment"
         android:label="@string/title_browse"
         tools:layout="@layout/fragment_browse" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.adsandakannipunajith.puplify.Activities.ui.cart.CartFragment"
+        android:name="com.adsandakannipunajith.puplify.activities.ui.cart.CartFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_cart" />
 
     <fragment
         android:id="@+id/navigation_info"
-        android:name="com.adsandakannipunajith.puplify.Activities.ui.info.InfoFragment"
+        android:name="com.adsandakannipunajith.puplify.activities.ui.info.InfoFragment"
         android:label="@string/title_educational_content"
         tools:layout="@layout/fragment_info" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.adsandakannipunajith.puplify.Activities.ui.profile.ProfileFragment"
+        android:name="com.adsandakannipunajith.puplify.activities.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
 

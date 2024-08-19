@@ -18,29 +18,29 @@
         android:theme="@style/Theme.Puplify"
         tools:targetApi="tiramisu">
         <activity
-            android:name=".Activities.UpdatePaymentMethodActivity"
+            android:name=".activities.UpdatePaymentMethodActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.UpdateProfileInformationActivity"
+            android:name=".activities.UpdateProfileInformationActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.AddReviewActivity"
+            android:name=".activities.AddReviewActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.ProductActivity"
+            android:name=".activities.ProductActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.DashboardActivity"
+            android:name=".activities.DashboardActivity"
             android:exported="false"
             android:label="@string/title_activity_dashboard" />
         <activity
-            android:name=".Activities.RegisterActivity"
+            android:name=".activities.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.LoginActivity"
+            android:name=".activities.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.MainActivity"
+            android:name=".activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -5,14 +5,14 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.UpdatePaymentMethodActivity">
+    tools:context=".activities.UpdatePaymentMethodActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint"
         android:padding="12dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Activities.UpdatePaymentMethodActivity">
+        tools:context=".activities.UpdatePaymentMethodActivity">
 
         <TextView
             android:id="@+id/textView12"

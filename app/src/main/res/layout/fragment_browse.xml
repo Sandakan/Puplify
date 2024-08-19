@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:padding="16dp"
-    tools:context=".Activities.ui.browse.BrowseFragment">
+    tools:context=".activities.ui.browse.BrowseFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

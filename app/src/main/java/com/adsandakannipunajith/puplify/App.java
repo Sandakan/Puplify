@@ -4,15 +4,11 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-
-import com.adsandakannipunajith.puplify.DAO.UserDAO;
 
 public class App extends Application {
 
     private static SQLiteDatabase database;
     private static SharedPreferences sharedPreferences;
-    private static Context context;
 
     @Override
     public void onCreate() {
@@ -23,9 +19,6 @@ public class App extends Application {
 //        sharedPreferences.edit().clear().apply();
         // Initialize SQLite database
         database = new DatabaseHelper(this).getWritableDatabase();
-
-        context = getApplicationContext();
-
     }
 
     // Method to get SQLiteDatabase instance
@@ -36,9 +29,5 @@ public class App extends Application {
     // Method to get SharedPreferences instance
     public static SharedPreferences getSharedPreferences() {
         return sharedPreferences;
-    }
-
-    public static Context getContext() {
-        return context;
     }
 }
