@@ -94,7 +94,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
-                    android:text="" />
+                    android:text=""
+                    android:textColor="@color/error" />
 
                 <TextView
                     android:id="@+id/register_last_name_input_label"
@@ -115,7 +116,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
-                    android:text="" />
+                    android:text=""
+                    android:textColor="@color/error" />
 
                 <TextView
                     android:id="@+id/register_email_input_label"
@@ -136,7 +138,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
-                    android:text="" />
+                    android:text=""
+                    android:textColor="@color/error" />
 
                 <TextView
                     android:id="@+id/register_address_input_label"
@@ -157,7 +160,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
-                    android:text="" />
+                    android:text=""
+                    android:textColor="@color/error" />
 
                 <TextView
                     android:id="@+id/register_password_input_label"
@@ -178,7 +182,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
-                    android:text="" />
+                    android:text=""
+                    android:textColor="@color/error" />
 
                 <TextView
                     android:id="@+id/register_confirm_password_input_label"
@@ -199,7 +204,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
-                    android:text="" />
+                    android:text=""
+                    android:textColor="@color/error" />
             </LinearLayout>
 
             <Button

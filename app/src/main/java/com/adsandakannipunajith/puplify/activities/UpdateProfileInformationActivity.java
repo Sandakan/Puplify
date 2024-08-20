@@ -88,6 +88,22 @@ public class UpdateProfileInformationActivity extends AppCompatActivity {
 
         boolean isValid = true;
 
+        if (firstName.isEmpty()) {
+            updateFirstNameInputErrorMessage.setVisibility(View.VISIBLE);
+            updateFirstNameInputErrorMessage.setText(R.string.first_name_cannot_be_empty);
+            isValid = false;
+        } else {
+            updateFirstNameInputErrorMessage.setVisibility(View.GONE);
+        }
+
+        if (lastName.isEmpty()) {
+            updateLastNameInputErrorMessage.setVisibility(View.VISIBLE);
+            updateLastNameInputErrorMessage.setText(R.string.last_name_cannot_be_empty);
+            isValid = false;
+        } else {
+            updateLastNameInputErrorMessage.setVisibility(View.GONE);
+        }
+
         if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             updateEmailInputErrorMessage.setVisibility(View.VISIBLE);
             updateEmailInputErrorMessage.setText(R.string.invalid_email);
@@ -109,6 +125,14 @@ public class UpdateProfileInformationActivity extends AppCompatActivity {
                 updatePasswordInputErrorMessage.setVisibility(View.GONE);
                 updateConfirmPasswordInputErrorMessage.setVisibility(View.GONE);
             }
+        }
+
+        if (address.isEmpty()) {
+            updateAddressInputErrorMessage.setVisibility(View.VISIBLE);
+            updateAddressInputErrorMessage.setText(R.string.address_cannot_be_empty);
+            isValid = false;
+        } else {
+            updateAddressInputErrorMessage.setVisibility(View.GONE);
         }
 
 

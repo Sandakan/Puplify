@@ -56,6 +56,16 @@ public class AddReviewActivity extends AppCompatActivity {
             String review = addReviewInput.getText().toString();
             float rating = addReviewRatingBar.getRating();
 
+            if (review.isEmpty()) {
+                Toast.makeText(this, "Review cannot be empty.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (rating == 0) {
+                Toast.makeText(this, "Rating cannot be empty.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             reviewDAO.addReview(review, rating);
             Toast.makeText(this, "Review added successfully.", Toast.LENGTH_SHORT).show();
             finish();

@@ -176,4 +176,10 @@ public class ProductActivity extends AppCompatActivity {
             ratingFiveStarImage.setImageResource(R.drawable.ic_star_half_24dp);
         }
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        updateAdapterData(reviewDAO.getReviews());
+    }
 }
